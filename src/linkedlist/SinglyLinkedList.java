@@ -15,6 +15,24 @@ public class SinglyLinkedList {
 	// this.head = new Node(0, null);
 	// }
 
+	public Node findByValue(int value) {
+		Node p = head;
+		while (p != null && p.getValue() != value) {
+			p = p.next;
+		}
+		return p;
+	}
+
+	private Node findByIndex(int index) {
+		Node p = head;
+		int pos = 0;
+		while (p != null && pos != index) {
+			p = p.next;
+			pos++;
+		}
+		return p;
+	}
+
 	// 无头结点
 	// 表头部插入
 	// 这种操作将于输入的顺序相反，逆序
@@ -75,6 +93,38 @@ public class SinglyLinkedList {
 		q.next = newNode;
 	}
 
+	private void deleteByNode(Node p) {
+		if (p == null || head == null) {
+			return;
+		}
+		// 删除头节点，那么他的next就是头节点了
+		if (p == head) {
+			head = head.next;
+			return;
+		}
+		Node q = head;
+		// 找到p的前驱q
+		while (q != null && q.next != p) {
+			q = q.next;
+		}
+		q.next = q.next.next;
+	}
+
+	private void deleteByValue(int value) {
+		if (head == null || head.value == value) {
+			head = head.next;
+			return;
+		}
+		Node p = head;
+		while (p.next != null) {
+			if (p.next.value == value) {
+				p.next = p.next.next;
+			}
+			p = p.next;
+		}
+
+	}
+
 	private void printAll() {
 		Node node = head.getNext();
 		while (node != null) {
@@ -126,5 +176,9 @@ public class SinglyLinkedList {
 			link.printAll();
 			i++;
 		}
+		System.out.println(link.findByValue(3).getValue());
+		System.out.println(link.findByIndex(3).getValue());
+		link.deleteByValue(2);
+		link.printAll();
 	}
 }
