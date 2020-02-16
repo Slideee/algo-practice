@@ -1,7 +1,7 @@
 package linkedlist;
 
 /**
- * 1) 链表中环的检测
+ * 1) 链表中环的检测 2)单链表反转
  *
  * @author Pink
  *
@@ -24,6 +24,21 @@ public class LinkedListAlgo {
 			}
 		}
 		return false;
+	}
+
+	// 单链表反转
+	// 思路，每次循环截掉一个头结点，把头结点逆序生成一个新的单链表
+	public static Node reverse(Node list) {
+		Node curr = list;
+		// 反转链表
+		Node pre = null;
+		while (curr != null) {
+			Node next = curr.next;// 截掉头结点
+			curr.next = pre;// 第一次循环头结点的next为null，1. 1->null 2. 2->1->null 3. 3->2->1->null
+			pre = curr;// 赋值给新生成的逆序单链表
+			curr = next;// 重新赋值一个截掉一次头结点的单链表,因为每次截掉头节点,实际上就是headNode=headNode.next，这样在第二步的时候可以以该headNode生成单链表。
+		}
+		return pre;
 	}
 
 	public static void printAll(Node list) {
@@ -67,8 +82,9 @@ public class LinkedListAlgo {
 
 	public static void main(String[] args) {
 		Node headNode = new Node(1, null);
-		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, headNode))))));
-		System.out.println(checkCircle(headNode));
-
+		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, null))))));
+		// System.out.println(checkCircle(headNode));
+		printAll(headNode);
+		printAll(reverse(headNode));
 	}
 }
