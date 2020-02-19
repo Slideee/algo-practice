@@ -66,14 +66,28 @@ public class Sorts {
 
 	public static void main(String[] args) {
 		Sorts sort = new Sorts();
-		int[] a = { 3, 1, 5, 6, 8, 7, 2 };
+		// int[] a = { 3, 1, 5, 6, 8, 7, 2 };
 		// sort.bubbleSort(a, a.length);
 
-	//	Sorts.insertionSort(a, a.length);
-		  Sorts.selectSort(a, a.length);
+		// Sorts.insertionSort(a, a.length);
+		// Sorts.selectSort(a, a.length);
+		//
+		// for (int i = 0; i < a.length; i++) {
+		// System.out.println(a[i]);
+		// }
 
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
+		// 111
+		int a = 7;
+		// 110
+		int b = 6;
+		// 110
+		System.out.println(a & b);
+		// 111
+		System.out.println(a | b);
+		// 001
+		System.out.println(a ^ b);
+		// 0100
+		System.out.println(a >>> 1);
+
 	}
 }
