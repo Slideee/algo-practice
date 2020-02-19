@@ -41,6 +41,19 @@ public class LinkedListAlgo {
 		return pre;
 	}
 
+	public static Node findMiddleNode(Node list) {
+		if (list == null) {
+			return null;
+		}
+		Node fast = list;
+		Node slow = list;
+		while (fast.next != null && fast.next.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+		return slow;
+	}
+
 	public static void printAll(Node list) {
 		Node p = list;
 		while (p != null) {
@@ -82,9 +95,12 @@ public class LinkedListAlgo {
 
 	public static void main(String[] args) {
 		Node headNode = new Node(1, null);
-		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, null))))));
-		// System.out.println(checkCircle(headNode));
-		printAll(headNode);
-		printAll(reverse(headNode));
+		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7, null)))))));
+		// // System.out.println(checkCircle(headNode));
+		// printAll(headNode);
+		// printAll(reverse(headNode));
+
+		printAll(findMiddleNode(headNode));
+
 	}
 }
