@@ -1,8 +1,11 @@
 package binary;
 
 /**
+ * 二分查找
+ *
  * @author Pink
- * @version : QuickSort, v 0.1 2020年02月19日 19:18 Pink Exp $
+ *
+ * @version $Id: BinarySearch, v 0.1 2020年02月21日 13:21:53 Pink Exp $
  */
 public class BinarySearch {
 
@@ -22,6 +25,7 @@ public class BinarySearch {
 		return -1;
 	}
 
+	// 递归实现
 	public static int bsearch(int[] a, int n, int value) {
 		return bsearchInternally(a, 0, n - 1, value);
 	}
