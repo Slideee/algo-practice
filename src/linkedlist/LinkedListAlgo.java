@@ -63,6 +63,18 @@ public class LinkedListAlgo {
 		System.out.println();
 	}
 
+	// 1->2->3->4 =》 2->1->4->3
+	public static Node change(Node node) {
+		Node temp = node;
+		while (temp != null && temp.next != null) {
+			int k = temp.data;
+			temp.data = temp.next.data;
+			temp.next.data = k;
+			temp = temp.next.next;
+		}
+		return node;
+	}
+
 	public static Node createNode(int value) {
 		return new Node(value, null);
 	}
@@ -95,12 +107,13 @@ public class LinkedListAlgo {
 
 	public static void main(String[] args) {
 		Node headNode = new Node(1, null);
-		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7, null)))))));
+		headNode.setNext(new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, null))))));
 		// // System.out.println(checkCircle(headNode));
 		// printAll(headNode);
 		// printAll(reverse(headNode));
 
-		printAll(findMiddleNode(headNode));
+		// printAll(findMiddleNode(headNode));
 
+		printAll(change(headNode));
 	}
 }
