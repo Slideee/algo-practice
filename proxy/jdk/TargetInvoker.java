@@ -41,6 +41,7 @@ public class TargetInvoker implements InvocationHandler {
 	}
 
 	public static void main(String[] args) {
+		System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true");
 		Cat cat = new Cat();
 		Animal proxy = (Animal) getProxy(cat);
 		proxy.call();
