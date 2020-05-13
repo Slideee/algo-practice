@@ -1,6 +1,7 @@
 package proxy;
 
 /**
+ * static proxy
  * @author Pink
  * @version : StaicProxyImpl, v 0.1 2020年05月13日 11:25 Pink Exp $
  */
