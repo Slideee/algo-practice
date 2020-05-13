@@ -8,7 +8,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * jdk
+ * jdk dynamic proxy
+ * 
  * @author Pink
  * @version : TargetInvoker, v 0.1 2020年05月13日 11:37 Pink Exp $
  */
@@ -30,10 +31,10 @@ public class TargetInvoker implements InvocationHandler {
 		System.out.println("after");
 		return result;
 	}
+
 	/**
-	 * loader 加载代理对象的类加载器
-	 * interfaces 代理对象实现的接口，与目标对象实现同样的接口
-	 * h 处理代理对象逻辑的处理器，即上面的 InvocationHandler 实现类。
+	 * loader 加载代理对象的类加载器 interfaces 代理对象实现的接口，与目标对象实现同样的接口 h 处理代理对象逻辑的处理器，即上面的
+	 * InvocationHandler 实现类。
 	 */
 	public static Object getProxy(Object object) {
 		return Proxy.newProxyInstance(object.getClass().getClassLoader(), object.getClass().getInterfaces(), new TargetInvoker(object));
